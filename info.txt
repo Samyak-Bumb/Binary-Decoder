@@ -1,0 +1,2 @@
+Hello World This Is Binary to Text & Text to Binary Converter by Samyak Bumb.
+**This is Responsive** Site
