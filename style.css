@@ -30,6 +30,9 @@ form{
     position: relative;
     justify-content: center;
 }
+textarea#input{
+    resize: none;
+}
 form textarea, form .output{
     padding: 10px;
     min-width: 600px;
