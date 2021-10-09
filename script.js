@@ -4,13 +4,15 @@ const inputEl = document.querySelector("#input");
 const switchEl = document.querySelector(".switch");
 const title = document.querySelector(".title");
 const copy = document.querySelector(".copy");
-formEl.addEventListener("submit", (e) =>{
+
+formEl.addEventListener("submit", (e)=>{
 	e.preventDefault();
 	const inputValue = e.target.input.value;
 	const inputType = e.target.input.getAttribute("data-type");
 	convert(inputType, inputValue);
 });
-switchEl.addEventListener("click", (e) =>{
+
+switchEl.addEventListener("click", (e)=>{
 	const type = e.target.getAttribute("data-type");
 	inputEl.value = "";
 	outputEl.innerText = "";
@@ -20,7 +22,8 @@ switchEl.addEventListener("click", (e) =>{
 		inputEl.setAttribute("placeholder", "Input Plain Text...");
 		outputEl.innerText = "Binary Output...";
 		title.innerText = "Text to Binary";
-	} else if (type === "text"){
+	}
+	else if (type === "text"){
 		e.target.setAttribute("data-type", "binary");
 		inputEl.setAttribute("data-type", "binary");
 		inputEl.setAttribute("placeholder", "Input Binary Code...");
@@ -28,15 +31,18 @@ switchEl.addEventListener("click", (e) =>{
 		title.innerText = "Binary to Text";
 	}
 });
+
 function convert(type, inputValue){
 	let output = "";
 	if (type === "binary"){
 		output = binaryToText(inputValue);
-	} else if (type === "text"){
+	}
+	else if (type === "text"){
 		output = textToBinary(inputValue);
 	}
 	outputEl.innerText = output;
 }
+
 function binaryToText(input){
 	let output = "";
 	output = input
@@ -44,9 +50,9 @@ function binaryToText(input){
 		.map((number) => parseInt(number, 2))
 		.map((number) => String.fromCharCode(number))
 		.join("");
-
 	return output;
 }
+
 function textToBinary(input){
 	let output = "";
 	output = input
@@ -54,12 +60,13 @@ function textToBinary(input){
 		.map((letter) => letter.charCodeAt())
 		.map((letter) => letter.toString(2))
 		.join(" ");
-
 	return output;
 }
-copy.addEventListener("click", (e) =>{
+
+copy.addEventListener("click", (e)=>{
 	copyOutput();
 });
+
 function copyOutput(){
 	const textarea = document.createElement("textarea");
 	textarea.setAttribute("readonly", "");
